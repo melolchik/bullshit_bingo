@@ -1,6 +1,7 @@
 package com.melolchik.bullshitbingo.ui.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.melolchik.bullshitbingo.objects.Item;
@@ -12,9 +13,20 @@ import com.melolchik.bullshitbingo.ui.views.ItemView;
 
 public class ItemListAdapter extends BaseListAdapter<Item> {
 
+    protected OnItemClickListener mOnItemClickListener;
+
+    public interface OnItemClickListener{
+        void onItemClick(Item item);
+    }
+
     public ItemListAdapter(RecyclerView recyclerView){
         super(recyclerView);
     }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemView item = new ItemView(getContext());
@@ -40,6 +52,17 @@ public class ItemListAdapter extends BaseListAdapter<Item> {
 
         public void setData(Item item){
             mItemView.bind(item);
+            mItemView.setClickable(true);
+            mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(mOnItemClickListener != null){
+                        int position = mRecyclerView.getChildAdapterPosition(mItemView);
+                        mOnItemClickListener.onItemClick(getItem(position));
+                    }
+                }
+            });
         }
     }
 }

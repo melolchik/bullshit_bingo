@@ -16,6 +16,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        showFragment(FirstListFragment.createInstance(),true,false);
+        if(savedInstanceState == null) {
+            showFragment(FirstListFragment.createInstance(), true, false);
+        }
     }
 }
