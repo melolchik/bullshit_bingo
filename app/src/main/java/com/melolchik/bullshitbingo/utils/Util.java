@@ -2,6 +2,7 @@ package com.melolchik.bullshitbingo.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.location.Location;
 import android.net.ConnectivityManager;
@@ -115,6 +116,11 @@ public class Util {
         final String androidId = Settings.Secure.getString(
                 context.getContentResolver(), Settings.Secure.ANDROID_ID);
         return androidId;
+    }
+
+    public static int getScreenOrientation() {
+        if(mContext == null) return Configuration.ORIENTATION_PORTRAIT;
+        return getContext().getResources().getConfiguration().orientation;
     }
     /**
      * Show error toast.

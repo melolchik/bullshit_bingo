@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.melolchik.bullshitbingo.AppLogger;
 import com.melolchik.bullshitbingo.ui.activities.BaseActivity;
 import com.melolchik.bullshitbingo.utils.Util;
 
@@ -207,7 +208,7 @@ public abstract class BaseFragment extends Fragment {
      * @param message the message
      */
     protected void log(String message) {
-        //AppLogger.log(this.getClass().getSimpleName() + " " + message);
+        AppLogger.log(this.getClass().getSimpleName() + " " + message);
     }
 
 

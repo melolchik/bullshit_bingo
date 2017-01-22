@@ -1,20 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="vertical"
+             android:background="?android:attr/colorBackground">
 
-    <include layout="@layout/view_custom_toolbar" />
+    <include layout="@layout/view_custom_toolbar"/>
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layout"
+    <com.melolchik.bullshitbingo.ui.views.swipe.BottomSwipeRefreshLayout
+        android:id="@+id/load_more_swipe_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </android.support.v4.widget.SwipeRefreshLayout>
-</FrameLayout>
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </com.melolchik.bullshitbingo.ui.views.swipe.BottomSwipeRefreshLayout>
+</LinearLayout>

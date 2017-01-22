@@ -31,9 +31,16 @@ public class ItemGenerator {
         return null;
     }
 
+    public int getPage() {
+        return mPage;
+    }
+
+    public int getFirstItemIndex(){
+        return (mPage - 1) * PAGE_SIZE;
+    }
     public List<BingoItem> generate(){
         List<BingoItem> list = new ArrayList<>();
-        int position = (mPage - 1) * PAGE_SIZE + 1;
+        int position = getFirstItemIndex() + 1;
         for(int i = 0; i < PAGE_SIZE; i++){
             list.add(BingoItem.generateItem(position + i));
         }

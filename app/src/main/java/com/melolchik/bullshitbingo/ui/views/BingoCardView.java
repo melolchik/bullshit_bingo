@@ -65,4 +65,9 @@ public class BingoCardView extends FrameLayout {
         mTextView.setText(item.getTitle());
         mUrlImageView.setUrl(item.getImageUrl());
     }
+
+    public void clear(){
+        mTextView.setText("");
+        mUrlImageView.setImageDrawable(null);
+    }
 }

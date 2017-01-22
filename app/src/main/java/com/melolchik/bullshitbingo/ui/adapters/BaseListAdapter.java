@@ -54,7 +54,8 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
     }
 
     public int setData(List<ItemType> list) {
-        setList(list);
+        //setList(list);
+        mList = list;
         notifyDataSetChanged();
        return mList.size() - 1;
     }

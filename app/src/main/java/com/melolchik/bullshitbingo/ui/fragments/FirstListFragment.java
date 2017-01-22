@@ -44,6 +44,7 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
     @Override
     protected void onCreateView(View rootView, Bundle savedInstanceState) {
         super.onCreateView(rootView, savedInstanceState);
+        log("onCreateView savedInstanceState = "  + savedInstanceState);
         //if(savedInstanceState == null) {
         mListData = new FirstListData(rootView);
         mListData.init(this);
@@ -54,6 +55,11 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        log("onConfigurationChanged newConfig = " + newConfig);
+        if(mListData != null){
+            mListData.onConfigurationChanged(newConfig);
+        }
+
 
     }
 
@@ -108,4 +114,6 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
 
         fragmentTransaction.commitAllowingStateLoss();
     }
+
+
 }
