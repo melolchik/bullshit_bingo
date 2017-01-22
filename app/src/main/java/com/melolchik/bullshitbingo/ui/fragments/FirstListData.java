@@ -2,13 +2,14 @@ package com.melolchik.bullshitbingo.ui.fragments;
 
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.melolchik.bullshitbingo.R;
-import com.melolchik.bullshitbingo.objects.Item;
-import com.melolchik.bullshitbingo.ui.adapters.ItemListAdapter;
+import com.melolchik.bullshitbingo.objects.BingoItem;
+import com.melolchik.bullshitbingo.ui.adapters.BingoItemListAdapter;
 import com.melolchik.bullshitbingo.utils.ItemGenerator;
 
 import java.util.List;
@@ -32,10 +33,10 @@ public class FirstListData implements SwipeRefreshLayout.OnRefreshListener{
 
     protected final Context mContext;
     protected static ItemGenerator mItemGenerator;
-    protected static List<Item> mItemList;
+    protected static List<BingoItem> mItemList;
 
     private LinearLayoutManager mLinearLayoutManager;
-    protected ItemListAdapter mAdapter;
+    protected BingoItemListAdapter mAdapter;
 
 
     public FirstListData(View rootView){
@@ -49,12 +50,13 @@ public class FirstListData implements SwipeRefreshLayout.OnRefreshListener{
         return mContext;
     }
 
-    public void init(ItemListAdapter.OnItemClickListener listener){
-        mLinearLayoutManager = new LinearLayoutManager(getContext());
+    public void init(BingoItemListAdapter.OnItemClickListener listener){
+        mLinearLayoutManager = new GridLayoutManager(getContext(),2);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mAdapter = new ItemListAdapter(mRecyclerView);
+        mAdapter = new BingoItemListAdapter(mRecyclerView);
         mAdapter.setOnItemClickListener(listener);
         mRecyclerView.setAdapter(mAdapter);
+        //mRecyclerView.addItemDecoration(new AlignmentItemDecoration(10,10));
 
         if(mItemList == null) {
             mItemList = mItemGenerator.generate();

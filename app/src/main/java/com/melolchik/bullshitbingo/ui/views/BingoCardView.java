@@ -1,12 +1,14 @@
 package com.melolchik.bullshitbingo.ui.views;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.melolchik.bullshitbingo.R;
-import com.melolchik.bullshitbingo.objects.Item;
+import com.melolchik.bullshitbingo.objects.BingoItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,27 +17,29 @@ import butterknife.ButterKnife;
  * Created by melolchik on 21.01.2017.
  */
 
-public class ItemView extends FrameLayout {
+public class BingoCardView extends FrameLayout {
 
-    protected
-    @BindView(R.id.image)
+    public
+    @BindView(R.id.bingo_image)
     UrlImageView mUrlImageView;
 
-    protected @BindView(R.id.text)
+    public  @BindView(R.id.bingo_text)
     TextView mTextView;
 
-    public ItemView(Context context) {
+    public BingoCardView(Context context) {
         this(context, null);
     }
 
-    public ItemView(Context context, AttributeSet attrs) {
+    public BingoCardView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ItemView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public BingoCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        inflate(context, R.layout.view_list_item, this);
+        inflate(context, R.layout.view_bingo_list_item, this);
         ButterKnife.bind(this,this);
+        setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent));
+
     }
 
    /* @Override
@@ -56,7 +60,7 @@ public class ItemView extends FrameLayout {
         return result;
     }*/
 
-    public void bind(Item item){
+    public void bind(BingoItem item){
         if(item == null) return;
         mTextView.setText(item.getTitle());
         mUrlImageView.setUrl(item.getImageUrl());

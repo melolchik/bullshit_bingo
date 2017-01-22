@@ -1,6 +1,6 @@
 package com.melolchik.bullshitbingo.utils;
 
-import com.melolchik.bullshitbingo.objects.Item;
+import com.melolchik.bullshitbingo.objects.BingoItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,11 +31,11 @@ public class ItemGenerator {
         return null;
     }
 
-    public List<Item> generate(){
-        List<Item> list = new ArrayList<>();
+    public List<BingoItem> generate(){
+        List<BingoItem> list = new ArrayList<>();
         int position = (mPage - 1) * PAGE_SIZE + 1;
         for(int i = 0; i < PAGE_SIZE; i++){
-            list.add(Item.generateItem(position + i));
+            list.add(BingoItem.generateItem(position + i));
         }
         return list;
     }

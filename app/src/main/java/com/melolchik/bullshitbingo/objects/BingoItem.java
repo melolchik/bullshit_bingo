@@ -9,14 +9,14 @@ import java.util.Random;
  * Created by melolchik on 21.01.2017.
  */
 
-public class Item implements Parcelable {
+public class BingoItem implements Parcelable {
 
     protected String mTitle;
     protected String mImageUrl;
 
-    public static Item generateItem(int position) {
-        Item item = new Item();
-        item.setTitle("Item " + position);
+    public static BingoItem generateItem(int position) {
+        BingoItem item = new BingoItem();
+        item.setTitle("BingoItem " + position);
 
         Random randomGenerator = new Random();
         int width = randomGenerator.nextInt(300) + 200;
@@ -28,7 +28,7 @@ public class Item implements Parcelable {
         return item;
     }
 
-    private Item(){
+    private BingoItem(){
 
     }
     public String getTitle() {
@@ -49,16 +49,16 @@ public class Item implements Parcelable {
 
     //region Parcelable
 
-    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
+    public static final Parcelable.Creator<BingoItem> CREATOR = new Parcelable.Creator<BingoItem>() {
 
         @Override
-        public Item createFromParcel(Parcel source) {
-            return new Item(source);
+        public BingoItem createFromParcel(Parcel source) {
+            return new BingoItem(source);
         }
 
         @Override
-        public Item[] newArray(int size) {
-            return new Item[size];
+        public BingoItem[] newArray(int size) {
+            return new BingoItem[size];
         }
     };
 
@@ -67,7 +67,7 @@ public class Item implements Parcelable {
         return 0;
     }
 
-    public Item(Parcel source) {
+    public BingoItem(Parcel source) {
         setTitle(source.readString());
         setImageUrl(source.readString());
     }

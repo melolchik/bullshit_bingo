@@ -23,6 +23,10 @@ public class Util {
         mContext = context;
     }
 
+    public static Context getContext() {
+        return mContext;
+    }
+
     public static String notEmptyString(String origin) {
         return origin == null ? "" : origin.trim();
     }

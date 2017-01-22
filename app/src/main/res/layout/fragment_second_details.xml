@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:clickable="true"
-    android:background="?android:attr/colorBackground">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="?android:attr/colorBackground"
+             android:clickable="true"
+             android:orientation="vertical"
+    >
 
     <include layout="@layout/view_custom_toolbar"/>
+
     <com.melolchik.bullshitbingo.ui.views.UrlImageView
-        android:id="@+id/image"
+        android:id="@+id/bingo_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_gravity="center_horizontal"
         />
 
 
-</FrameLayout>
+</LinearLayout>

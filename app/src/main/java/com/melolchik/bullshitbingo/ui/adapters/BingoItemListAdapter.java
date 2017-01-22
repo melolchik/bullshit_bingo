@@ -4,22 +4,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.melolchik.bullshitbingo.objects.Item;
-import com.melolchik.bullshitbingo.ui.views.ItemView;
+import com.melolchik.bullshitbingo.objects.BingoItem;
+import com.melolchik.bullshitbingo.ui.views.BingoCardView;
 
 /**
  * Created by melolchik on 21.01.2017.
  */
 
-public class ItemListAdapter extends BaseListAdapter<Item> {
+public class BingoItemListAdapter extends BaseListAdapter<BingoItem> {
 
     protected OnItemClickListener mOnItemClickListener;
 
     public interface OnItemClickListener{
-        void onItemClick(Item item);
+        void onItemClick(BingoCardView view,BingoItem item);
     }
 
-    public ItemListAdapter(RecyclerView recyclerView){
+    public BingoItemListAdapter(RecyclerView recyclerView){
         super(recyclerView);
     }
 
@@ -29,7 +29,7 @@ public class ItemListAdapter extends BaseListAdapter<Item> {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ItemView item = new ItemView(getContext());
+        BingoCardView item = new BingoCardView(getContext());
         item.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         return new ItemHolder(item);
     }
@@ -44,13 +44,13 @@ public class ItemListAdapter extends BaseListAdapter<Item> {
 
     protected class ItemHolder extends RecyclerView.ViewHolder{
 
-        private final ItemView mItemView;
-        public ItemHolder(ItemView itemView){
+        private final BingoCardView mItemView;
+        public ItemHolder(BingoCardView itemView){
             super(itemView);
             mItemView = itemView;
         }
 
-        public void setData(Item item){
+        public void setData(BingoItem item){
             mItemView.bind(item);
             mItemView.setClickable(true);
             mItemView.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class ItemListAdapter extends BaseListAdapter<Item> {
 
                     if(mOnItemClickListener != null){
                         int position = mRecyclerView.getChildAdapterPosition(mItemView);
-                        mOnItemClickListener.onItemClick(getItem(position));
+                        mOnItemClickListener.onItemClick(mItemView,getItem(position));
                     }
                 }
             });
