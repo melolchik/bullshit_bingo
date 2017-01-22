@@ -9,6 +9,13 @@
 
     <include layout="@layout/view_custom_toolbar"/>
 
+    <TextView
+        android:id="@+id/bingo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+    />
+
     <com.melolchik.bullshitbingo.ui.views.UrlImageView
         android:id="@+id/bingo_image"
         android:layout_width="match_parent"

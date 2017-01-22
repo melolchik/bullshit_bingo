@@ -2,6 +2,7 @@ package com.melolchik.bullshitbingo.ui.views;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
@@ -64,10 +65,14 @@ public class BingoCardView extends FrameLayout {
         if(item == null) return;
         mTextView.setText(item.getTitle());
         mUrlImageView.setUrl(item.getImageUrl());
+        ViewCompat.setTransitionName(mUrlImageView,item.getShareImageName());
+        ViewCompat.setTransitionName(mTextView,item.getShareTextName());
     }
 
     public void clear(){
         mTextView.setText("");
         mUrlImageView.setImageDrawable(null);
+        ViewCompat.setTransitionName(mUrlImageView,"");
+        ViewCompat.setTransitionName(mTextView,"");
     }
 }

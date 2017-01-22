@@ -6,8 +6,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
+import android.transition.ChangeBounds;
+import android.transition.ChangeImageTransform;
+import android.transition.ChangeTransform;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.transition.TransitionSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,11 +28,18 @@ import static com.melolchik.bullshitbingo.ui.activities.BaseActivity.ID_FRAGMENT
 /**
  * Created by melolchik on 21.01.2017.
  */
-
 public class FirstListFragment extends BaseFragmentWithToolbar implements BingoItemListAdapter.OnItemClickListener {
 
+    /**
+     * The M list data.
+     */
     protected FirstListData mListData;
 
+    /**
+     * Create instance first list fragment.
+     *
+     * @return the first list fragment
+     */
     public static FirstListFragment createInstance() {
         FirstListFragment fragment = new FirstListFragment();
         Bundle args = new Bundle();
@@ -44,7 +56,7 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
     @Override
     protected void onCreateView(View rootView, Bundle savedInstanceState) {
         super.onCreateView(rootView, savedInstanceState);
-        log("onCreateView savedInstanceState = "  + savedInstanceState);
+        log("onCreateView savedInstanceState = " + savedInstanceState);
         //if(savedInstanceState == null) {
         mListData = new FirstListData(rootView);
         mListData.init(this);
@@ -56,7 +68,7 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         log("onConfigurationChanged newConfig = " + newConfig);
-        if(mListData != null){
+        if (mListData != null) {
             mListData.onConfigurationChanged(newConfig);
         }
 
@@ -75,6 +87,12 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
         }
     }
 
+    /**
+     * Show details fragment.
+     *
+     * @param newFragment   the new fragment
+     * @param bingoCardView the bingo card view
+     */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void showDetailsFragment(BaseFragment newFragment, BingoCardView bingoCardView) {
         if (getActivity() == null) return;
@@ -85,6 +103,13 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
 
         Transition changeTransform = TransitionInflater.from(Util.getContext()).
                 inflateTransition(R.transition.change_image_transform);
+
+        /*int duration = 2000;
+        Transition changeTransition2 = new TransitionSet().
+                addTransition(new ChangeTransform().setDuration(duration))
+                .addTransition(new ChangeImageTransform().setDuration(duration))
+                .addTransition(new ChangeBounds().setDuration(duration));
+        changeTransition2.setDuration(duration);*/
         Transition explodeTransform = TransitionInflater.from(Util.getContext()).
                 inflateTransition(android.R.transition.fade);
 
@@ -96,18 +121,19 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
         newFragment.setSharedElementEnterTransition(changeTransform);
         newFragment.setEnterTransition(explodeTransform);
 
-        // Find the shared element (in Fragment A)
+        // Find the shared element (in first fragment)
         // ImageView ivProfile = (ImageView) findViewById(R.id.ivProfile);
         ImageView imageView = bingoCardView.mUrlImageView;
         TextView textView = bingoCardView.mTextView;
 
 
+        if (imageView != null) {
 
-        if(imageView != null) {
-            fragmentTransaction.addSharedElement(imageView, getString(R.string.item_image_transition_name));
+            fragmentTransaction.addSharedElement(imageView, imageView.getTransitionName());
         }
-        if(textView != null) {
-            fragmentTransaction.addSharedElement(textView, getString(R.string.item_text_transition_name));
+        if (textView != null) {
+
+            fragmentTransaction.addSharedElement(textView, textView.getTransitionName());
         }
         fragmentTransaction.replace(ID_FRAGMENT_CONTAINER, newFragment);
         fragmentTransaction.addToBackStack(newFragment.getTagForStack());

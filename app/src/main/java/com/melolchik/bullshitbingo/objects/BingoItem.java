@@ -47,6 +47,14 @@ public class BingoItem implements Parcelable {
         mImageUrl = imageUrl;
     }
 
+    public String getShareImageName(){
+        return getTitle() + "image";
+    }
+
+    public String getShareTextName(){
+        return getTitle() + "text";
+    }
+
     //region Parcelable
 
     public static final Parcelable.Creator<BingoItem> CREATOR = new Parcelable.Creator<BingoItem>() {

@@ -98,11 +98,13 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
     @Override
     protected void onCreateView(View rootView, Bundle savedInstanceState) {
         super.onCreateView(rootView, savedInstanceState);
+        ButterKnife.bind(this,rootView);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            ViewCompat.setTransitionName(mToolbarTitle,getString(R.string.item_text_transition_name));
+            ViewCompat.setTransitionName(mUrlImageView,mItem.getShareImageName());
+            ViewCompat.setTransitionName(mToolbarTitle,mItem.getShareTextName());
         }
         mRoot = rootView;
-        ButterKnife.bind(this,rootView);
+
         if(mItem != null){
             mUrlImageView.setUrl(mItem.getImageUrl());
             mTextView.setVisibility(View.GONE);
@@ -110,9 +112,14 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
     }
 
     protected void rotate(){
-        startRotateAnimation();
+       startRotateAnimation();
+       // rotation2();
     }
 
+    protected void rotation2(){
+        TransitionManager.beginDelayedTransition((ViewGroup) mRoot);
+        ViewCompat.setRotation(mUrlImageView, 720);
+    }
     protected ValueAnimator mRotateAnimator = null;
 
     protected void startRotateAnimation() {
