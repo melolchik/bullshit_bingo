@@ -2,21 +2,18 @@ package com.melolchik.bullshitbingo.ui.fragments;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.drawable.GradientDrawable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.melolchik.bullshitbingo.R;
 import com.melolchik.bullshitbingo.objects.BingoItem;
 import com.melolchik.bullshitbingo.ui.adapters.BingoItemListAdapter;
-import com.melolchik.bullshitbingo.ui.views.GridAutoLayoutManager;
+import com.melolchik.bullshitbingo.ui.views.FixedStaggeredGridLayoutManager;
 import com.melolchik.bullshitbingo.ui.views.swipe.BottomSwipeRefreshLayout;
 import com.melolchik.bullshitbingo.utils.ItemGenerator;
-import com.melolchik.bullshitbingo.utils.Util;
 
 import java.util.List;
 
@@ -29,6 +26,7 @@ import butterknife.ButterKnife;
 
 public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener{
 
+    protected final static int SPAN_COUNT = 2;
     protected final static int PORTRAIT_SPAN_COUNT = 1;
     protected final static int LANDSCAPE_SPAN_COUNT = 4;
 
@@ -63,7 +61,7 @@ public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener
     }
 
     public void init(BingoItemListAdapter.OnItemClickListener listener){
-        GridAutoLayoutManager layoutManager = new GridAutoLayoutManager(getContext(),PORTRAIT_SPAN_COUNT,LANDSCAPE_SPAN_COUNT);
+        StaggeredGridLayoutManager layoutManager = new FixedStaggeredGridLayoutManager(SPAN_COUNT,StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new BingoItemListAdapter(mRecyclerView);
         mAdapter.setOnItemClickListener(listener);
@@ -111,9 +109,9 @@ public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener
 
     public void onConfigurationChanged(Configuration newConfig) {
 
-        ((GridAutoLayoutManager)mRecyclerView.getLayoutManager()).onConfigurationChanged(newConfig);
+      /*  ((GridAutoLayoutManager)mRecyclerView.getLayoutManager()).onConfigurationChanged(newConfig);*/
         mRecyclerView.requestLayout();
-        mAdapter.setData(mItemList);
+        mAdapter.notifyDataSetChanged();
         mRecyclerView.invalidateItemDecorations();
 
     }

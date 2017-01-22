@@ -110,11 +110,6 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
     }
 
     protected void rotate(){
-        /*TransitionManager.beginDelayedTransition((ViewGroup) mRoot);
-
-        double currentAngleRad = Math.toRadians(720);
-
-        ViewCompat.setRotationY(mUrlImageView,(float) currentAngleRad);*/
         startRotateAnimation();
     }
 

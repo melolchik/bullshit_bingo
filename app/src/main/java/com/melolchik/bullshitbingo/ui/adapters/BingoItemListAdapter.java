@@ -41,12 +41,12 @@ public class BingoItemListAdapter extends BaseListAdapter<BingoItem> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BingoCardView item = new BingoCardView(getContext());
-        int width = Util.getScreenWidth();
+      /*  int width = Util.getScreenWidth();
         int height = Util.getScreenHeight();
         int currentWidth = Util.getScreenOrientation() == Configuration.ORIENTATION_PORTRAIT ? Math.min(width,height) : Math.max(width,height);
         currentWidth /= getSpanCount();
         item.setLayoutParams(new RecyclerView.LayoutParams(currentWidth, currentWidth));
-        item.requestLayout();
+        item.requestLayout();*/
         return new ItemHolder(item);
     }
 
