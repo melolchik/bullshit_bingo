@@ -22,6 +22,9 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
      * The constant ARG_TITLE_STRING.
      */
     public final static String ARG_TITLE_STRING = "arg_title";
+    /**
+     * The constant ARG_TITLE_STRING_ID.
+     */
     public final static String ARG_TITLE_STRING_ID = "arg_title_id";
 
 
@@ -41,6 +44,9 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
      * The M title.
      */
     protected String mTitle;
+    /**
+     * The M title id.
+     */
     protected @StringRes
     int mTitleId;
 
@@ -72,11 +78,17 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
         }
     }
 
+    /**
+     * Has toolbar boolean.
+     *
+     * @return the boolean
+     */
     protected boolean hasToolbar(){
         return true;
     }
 
     //region Toolbar
+
     /**
      * Init toolbar menu.
      */
@@ -97,6 +109,9 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
         updateNavigationIcon();
     }
 
+    /**
+     * Update navigation icon.
+     */
     protected void updateNavigationIcon(){
         if (mToolbar == null) return;
         if(!hasToolbar()){
@@ -129,6 +144,9 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
         return true;
     }
 
+    /**
+     * On navigation click.
+     */
     protected void onNavigationClick(){
         if (getActivity() instanceof BaseActivity) {
             BaseActivity activity = (BaseActivity) getActivity();
@@ -167,7 +185,7 @@ public abstract class BaseFragmentWithToolbar extends BaseFragment implements To
         mToolbarTitle.setText(title);
     }
 
-     /**
+    /**
      * Gets title.
      *
      * @return the title

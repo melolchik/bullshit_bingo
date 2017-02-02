@@ -23,32 +23,66 @@ import butterknife.ButterKnife;
 /**
  * Created by melolchik on 21.01.2017.
  */
-
 public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener{
 
+    /**
+     * The constant SPAN_COUNT.
+     */
     protected final static int SPAN_COUNT = 2;
+    /**
+     * The constant PORTRAIT_SPAN_COUNT.
+     */
     protected final static int PORTRAIT_SPAN_COUNT = 1;
+    /**
+     * The constant LANDSCAPE_SPAN_COUNT.
+     */
     protected final static int LANDSCAPE_SPAN_COUNT = 4;
 
+    /**
+     * The M recycler view.
+     */
     protected
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
 
+    /**
+     * The M refresh layout.
+     */
     protected
     @BindView(R.id.swipe_layout)
     SwipeRefreshLayout mRefreshLayout;
 
+    /**
+     * The M load more swipe layout.
+     */
     protected
     @BindView(R.id.load_more_swipe_layout)
     BottomSwipeRefreshLayout mLoadMoreSwipeLayout;
 
+    /**
+     * The M context.
+     */
     protected final Context mContext;
+    /**
+     * The constant mItemGenerator.
+     */
     protected static ItemGenerator mItemGenerator;
+    /**
+     * The M item list.
+     */
     protected static List<BingoItem> mItemList;
 
+    /**
+     * The M adapter.
+     */
     protected BingoItemListAdapter mAdapter;
 
 
+    /**
+     * Instantiates a new First list data.
+     *
+     * @param rootView the root view
+     */
     public FirstListData(View rootView){
 
         ButterKnife.bind(this,rootView);
@@ -56,10 +90,20 @@ public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener
         mItemGenerator = ItemGenerator.createGenerator();
     }
 
+    /**
+     * Gets context.
+     *
+     * @return the context
+     */
     public Context getContext() {
         return mContext;
     }
 
+    /**
+     * Init.
+     *
+     * @param listener the listener
+     */
     public void init(BingoItemListAdapter.OnItemClickListener listener){
         StaggeredGridLayoutManager layoutManager = new FixedStaggeredGridLayoutManager(SPAN_COUNT,StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -107,6 +151,11 @@ public class FirstListData implements BottomSwipeRefreshLayout.OnRefreshListener
     }
 
 
+    /**
+     * On configuration changed.
+     *
+     * @param newConfig the new config
+     */
     public void onConfigurationChanged(Configuration newConfig) {
 
       /*  ((GridAutoLayoutManager)mRecyclerView.getLayoutManager()).onConfigurationChanged(newConfig);*/

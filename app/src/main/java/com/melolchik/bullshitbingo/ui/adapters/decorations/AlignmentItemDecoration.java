@@ -12,12 +12,27 @@ import com.melolchik.bullshitbingo.utils.Util;
  */
 public class AlignmentItemDecoration extends RecyclerView.ItemDecoration {
 
+    /**
+     * The M left padding.
+     */
     protected int mLeftPadding = 10;
+    /**
+     * The M top button.
+     */
     protected int mTopButton = 10;
 
+    /**
+     * Instantiates a new Alignment item decoration.
+     */
     public AlignmentItemDecoration() {
     }
 
+    /**
+     * Instantiates a new Alignment item decoration.
+     *
+     * @param leftPadding the left padding
+     * @param topPadding  the top padding
+     */
     public AlignmentItemDecoration(int leftPadding, int topPadding) {
         mLeftPadding = leftPadding;
         mTopButton = topPadding;

@@ -18,20 +18,45 @@ import android.widget.Toast;
  */
 public class Util {
 
+    /**
+     * The constant mContext.
+     */
     public static Context mContext;
 
+    /**
+     * Init.
+     *
+     * @param context the context
+     */
     public static void init(Context context){
         mContext = context;
     }
 
+    /**
+     * Gets context.
+     *
+     * @return the context
+     */
     public static Context getContext() {
         return mContext;
     }
 
+    /**
+     * Not empty string string.
+     *
+     * @param origin the origin
+     * @return the string
+     */
     public static String notEmptyString(String origin) {
         return origin == null ? "" : origin.trim();
     }
 
+    /**
+     * Convert dp to pixel float.
+     *
+     * @param dp the dp
+     * @return the float
+     */
     public static float convertDpToPixel(float dp) {
         if(mContext == null) return 0f;
         Resources resources = mContext.getResources();
@@ -40,6 +65,12 @@ public class Util {
         return px;
     }
 
+    /**
+     * Is email valid boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
     public  static boolean isEmailValid(String email){
         boolean valid = true;
 
@@ -52,6 +83,11 @@ public class Util {
     }
 
 
+    /**
+     * Is network available boolean.
+     *
+     * @return the boolean
+     */
     public static boolean isNetworkAvailable() {
         if (mContext == null)
             return false;
@@ -60,6 +96,11 @@ public class Util {
         return networkInfo != null && networkInfo.isConnected();
     }
 
+    /**
+     * Hide soft keyboard.
+     *
+     * @param activity the activity
+     */
     public static void hideSoftKeyboard(Activity activity) {
         if (activity != null && activity.getCurrentFocus() != null) {
             InputMethodManager inputMethodManager
@@ -68,6 +109,11 @@ public class Util {
         }
     }
 
+    /**
+     * Show soft keyboard.
+     *
+     * @param activity the activity
+     */
     public static void showSoftKeyboard(Activity activity) {
         if (activity != null/* && activity.getCurrentFocus() != null*/) {
             InputMethodManager inputMethodManager
@@ -76,16 +122,31 @@ public class Util {
         }
     }
 
+    /**
+     * Gets screen width.
+     *
+     * @return the screen width
+     */
     public static int getScreenWidth() {
         if (mContext == null) return 0;
         return mContext.getResources().getDisplayMetrics().widthPixels;
     }
 
+    /**
+     * Gets screen height.
+     *
+     * @return the screen height
+     */
     public static int getScreenHeight() {
         if (mContext == null) return 0;
         return mContext.getResources().getDisplayMetrics().heightPixels;
     }
 
+    /**
+     * Gets status bar height.
+     *
+     * @return the status bar height
+     */
     public static int getStatusBarHeight() {
         if(mContext == null) return 0;
         int result = 0;
@@ -96,6 +157,12 @@ public class Util {
         return result;
     }
 
+    /**
+     * Gets action bar height.
+     *
+     * @param context the context
+     * @return the action bar height
+     */
     public static int getActionBarHeight(Context context) {
        /* TypedValue tv = new TypedValue();
         context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);*/
@@ -104,11 +171,22 @@ public class Util {
 
     }
 
+    /**
+     * Gets fragment height.
+     *
+     * @return the fragment height
+     */
     public static int getFragmentHeight() {
 
         return getScreenHeight() - getStatusBarHeight();
     }
 
+    /**
+     * Gets unique id.
+     *
+     * @param context the context
+     * @return the unique id
+     */
     public static String getUniqueId(Context context) {
         /*TelephonyManager telephonyManager = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
@@ -118,10 +196,16 @@ public class Util {
         return androidId;
     }
 
+    /**
+     * Gets screen orientation.
+     *
+     * @return the screen orientation
+     */
     public static int getScreenOrientation() {
         if(mContext == null) return Configuration.ORIENTATION_PORTRAIT;
         return getContext().getResources().getConfiguration().orientation;
     }
+
     /**
      * Show error toast.
      *
@@ -143,6 +227,12 @@ public class Util {
         Toast toast = Toast.makeText(mContext, messageResId, Toast.LENGTH_LONG);
         toast.show();
     }
+
+    /**
+     * Log.
+     *
+     * @param message the message
+     */
     protected static void log(String message) {
         //AppLogger.log(Util.class.getSimpleName() + " " + message);
     }

@@ -39,7 +39,7 @@ public class BingoCardView extends FrameLayout {
         super(context, attrs, defStyleAttr);
         inflate(context, R.layout.view_bingo_list_item, this);
         ButterKnife.bind(this,this);
-        setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent));
+        //setBackgroundColor(ContextCompat.getColor(context,R.color.color_transparent));
 
     }
 

@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Created by Olga Melekhina on 08.06.2016.
+ *
+ * @param <ItemType> the type parameter
  */
 public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -53,6 +55,12 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
         return mContext;
     }
 
+    /**
+     * Sets data.
+     *
+     * @param list the list
+     * @return the data
+     */
     public int setData(List<ItemType> list) {
         //setList(list);
         mList = list;
@@ -60,10 +68,20 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
        return mList.size() - 1;
     }
 
+    /**
+     * Get data list.
+     *
+     * @return the list
+     */
     public List<ItemType> getData(){
         return mList == null ? Collections.<ItemType>emptyList() : mList;
     }
 
+    /**
+     * Add data.
+     *
+     * @param list the list
+     */
     public void addData(List<ItemType> list) {
         addList(list);
         notifyDataSetChanged();
@@ -71,6 +89,11 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
     }
 
 
+    /**
+     * Add list.
+     *
+     * @param list the list
+     */
     protected void addList(List<ItemType> list) {
         if(mList == null || mList.isEmpty()){
            setList(list);
@@ -79,6 +102,11 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
         }
     }
 
+    /**
+     * Sets list.
+     *
+     * @param list the list
+     */
     protected void setList(List<ItemType> list) {
         if (list == null) {
             mList = new ArrayList<>();
@@ -88,6 +116,12 @@ public abstract class BaseListAdapter<ItemType> extends RecyclerView.Adapter<Rec
     }
 
 
+    /**
+     * Gets item.
+     *
+     * @param position the position
+     * @return the item
+     */
     public ItemType getItem(int position) {
         if (mList == null || mList.isEmpty())
             return null;

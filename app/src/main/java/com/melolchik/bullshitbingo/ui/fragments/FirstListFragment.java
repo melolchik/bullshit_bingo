@@ -104,13 +104,7 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
         Transition changeTransform = TransitionInflater.from(Util.getContext()).
                 inflateTransition(R.transition.change_image_transform);
 
-        /*int duration = 2000;
-        Transition changeTransition2 = new TransitionSet().
-                addTransition(new ChangeTransform().setDuration(duration))
-                .addTransition(new ChangeImageTransform().setDuration(duration))
-                .addTransition(new ChangeBounds().setDuration(duration));
-        changeTransition2.setDuration(duration);*/
-        Transition explodeTransform = TransitionInflater.from(Util.getContext()).
+         Transition explodeTransform = TransitionInflater.from(Util.getContext()).
                 inflateTransition(android.R.transition.fade);
 
         // Setup exit transition on first fragment
@@ -135,7 +129,12 @@ public class FirstListFragment extends BaseFragmentWithToolbar implements BingoI
 
             fragmentTransaction.addSharedElement(textView, textView.getTransitionName());
         }
-        fragmentTransaction.replace(ID_FRAGMENT_CONTAINER, newFragment);
+        /*
+        Vey important!!! hide --> add --> show
+         */
+        fragmentTransaction.hide(this);
+        fragmentTransaction.add(ID_FRAGMENT_CONTAINER, newFragment);
+        fragmentTransaction.show(newFragment);
         fragmentTransaction.addToBackStack(newFragment.getTagForStack());
 
         fragmentTransaction.commitAllowingStateLoss();

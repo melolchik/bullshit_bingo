@@ -6,6 +6,9 @@ import android.os.Bundle;
 import com.melolchik.bullshitbingo.R;
 import com.melolchik.bullshitbingo.ui.fragments.FirstListFragment;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends BaseActivity {
 
     @Override

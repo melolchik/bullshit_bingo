@@ -16,6 +16,12 @@ import com.melolchik.bullshitbingo.R;
 import com.melolchik.bullshitbingo.objects.BingoItem;
 import com.melolchik.bullshitbingo.ui.views.UrlImageView;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,6 +40,9 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
      */
     protected BingoItem mItem;
 
+    /**
+     * The M root.
+     */
     protected View mRoot;
 
     /**
@@ -43,6 +52,9 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
     @BindView(R.id.bingo_image)
     UrlImageView mUrlImageView;
 
+    /**
+     * The M text view.
+     */
     protected
     @BindView(R.id.bingo_text)
     TextView mTextView;
@@ -111,17 +123,30 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
         }
     }
 
+    /**
+     * Rotate.
+     */
     protected void rotate(){
        startRotateAnimation();
        // rotation2();
     }
 
+    /**
+     * Rotation 2.
+     */
     protected void rotation2(){
         TransitionManager.beginDelayedTransition((ViewGroup) mRoot);
         ViewCompat.setRotation(mUrlImageView, 720);
     }
+
+    /**
+     * The M rotate animator.
+     */
     protected ValueAnimator mRotateAnimator = null;
 
+    /**
+     * Start rotate animation.
+     */
     protected void startRotateAnimation() {
         if(mRotateAnimator!= null && mRotateAnimator.isRunning()) return;
 
@@ -146,6 +171,9 @@ public class SecondDetailsFragment extends BaseFragmentWithToolbar {
         mRotateAnimator.start();
     }
 
+    /**
+     * Stop rotate animation.
+     */
     protected void stopRotateAnimation() {
         if (mRotateAnimator != null) {
             mRotateAnimator.cancel();

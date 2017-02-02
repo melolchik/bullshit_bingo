@@ -13,23 +13,49 @@ import com.melolchik.bullshitbingo.utils.Util;
 /**
  * Created by melolchik on 21.01.2017.
  */
-
 public class BingoItemListAdapter extends BaseListAdapter<BingoItem> {
 
+    /**
+     * The M on item click listener.
+     */
     protected OnItemClickListener mOnItemClickListener;
 
+    /**
+     * The interface On item click listener.
+     */
     public interface OnItemClickListener{
+        /**
+         * On item click.
+         *
+         * @param view the view
+         * @param item the item
+         */
         void onItemClick(BingoCardView view,BingoItem item);
     }
 
+    /**
+     * Instantiates a new Bingo item list adapter.
+     *
+     * @param recyclerView the recycler view
+     */
     public BingoItemListAdapter(RecyclerView recyclerView){
         super(recyclerView);
     }
 
+    /**
+     * Sets on item click listener.
+     *
+     * @param onItemClickListener the on item click listener
+     */
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
 
+    /**
+     * Get span count int.
+     *
+     * @return the int
+     */
     protected int getSpanCount(){
         RecyclerView.LayoutManager layoutManager = mRecyclerView.getLayoutManager();
         if(layoutManager instanceof GridLayoutManager){
@@ -58,14 +84,28 @@ public class BingoItemListAdapter extends BaseListAdapter<BingoItem> {
         }
     }
 
+    /**
+     * The type Item holder.
+     */
     protected class ItemHolder extends RecyclerView.ViewHolder{
 
         private final BingoCardView mItemView;
+
+        /**
+         * Instantiates a new Item holder.
+         *
+         * @param itemView the item view
+         */
         public ItemHolder(BingoCardView itemView){
             super(itemView);
             mItemView = itemView;
         }
 
+        /**
+         * Set data.
+         *
+         * @param item the item
+         */
         public void setData(BingoItem item){
             mItemView.clear();
             mItemView.bind(item);

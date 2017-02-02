@@ -41,7 +41,8 @@ public abstract class BaseFragment extends Fragment {
     /**
      * On create view.
      *
-     * @param rootView the root view
+     * @param rootView           the root view
+     * @param savedInstanceState the saved instance state
      */
     protected abstract void onCreateView(View rootView, Bundle savedInstanceState);
 
@@ -144,7 +145,7 @@ public abstract class BaseFragment extends Fragment {
         return this.getClass().getCanonicalName();
     }
 
-     /**
+    /**
      * Show fragment.
      *
      * @param newFragment       the new fragment
@@ -159,6 +160,11 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+    /**
+     * Gets current fragment.
+     *
+     * @return the current fragment
+     */
     public BaseFragment getCurrentFragment() {
         FragmentActivity activity = getActivity();
         if (activity == null) return null;
@@ -168,6 +174,11 @@ public abstract class BaseFragment extends Fragment {
         return null;
     }
 
+    /**
+     * Go to prev fragment in parent activity.
+     *
+     * @param tag the tag
+     */
     protected void goToPrevFragmentInParentActivity(String tag) {
 
         FragmentActivity activity = getActivity();

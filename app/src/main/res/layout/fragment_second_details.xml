@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="?android:attr/colorBackground"
-             android:clickable="true"
-             android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="?android:attr/colorBackground"
+              android:clickable="true"
+              android:orientation="vertical"
     >
 
     <include layout="@layout/view_custom_toolbar"/>
@@ -22,6 +22,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         />
-
 
 </LinearLayout>

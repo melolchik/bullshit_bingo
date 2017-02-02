@@ -7,13 +7,30 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+/**
+ * The type Network state receiver.
+ */
 public class NetworkStateReceiver extends BroadcastReceiver {
 
+    /**
+     * The Listener.
+     */
     protected NetworkStateReceiverListener listener;
+    /**
+     * The Connected.
+     */
     protected boolean connected;
+    /**
+     * The M intent filter.
+     */
     protected IntentFilter mIntentFilter = null;
 
 
+    /**
+     * Instantiates a new Network state receiver.
+     *
+     * @param listener the listener
+     */
     public NetworkStateReceiver(NetworkStateReceiverListener listener) {
         this.listener = listener;
     }
@@ -29,6 +46,11 @@ public class NetworkStateReceiver extends BroadcastReceiver {
         notifyState(listener);
     }
 
+    /**
+     * Gets intent filter.
+     *
+     * @return the intent filter
+     */
     public IntentFilter getIntentFilter() {
         if(mIntentFilter == null) {
             mIntentFilter = new IntentFilter();
@@ -48,9 +70,18 @@ public class NetworkStateReceiver extends BroadcastReceiver {
     }
 
 
+    /**
+     * The interface Network state receiver listener.
+     */
     public interface NetworkStateReceiverListener {
+        /**
+         * Network available.
+         */
         public void networkAvailable();
 
+        /**
+         * Network unavailable.
+         */
         public void networkUnavailable();
     }
 }

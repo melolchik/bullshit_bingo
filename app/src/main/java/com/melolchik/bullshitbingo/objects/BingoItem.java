@@ -8,12 +8,23 @@ import java.util.Random;
 /**
  * Created by melolchik on 21.01.2017.
  */
-
 public class BingoItem implements Parcelable {
 
+    /**
+     * The M title.
+     */
     protected String mTitle;
+    /**
+     * The M image url.
+     */
     protected String mImageUrl;
 
+    /**
+     * Generate item bingo item.
+     *
+     * @param position the position
+     * @return the bingo item
+     */
     public static BingoItem generateItem(int position) {
         BingoItem item = new BingoItem();
         item.setTitle("BingoItem " + position);
@@ -31,32 +42,66 @@ public class BingoItem implements Parcelable {
     private BingoItem(){
 
     }
+
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public String getTitle() {
         return mTitle;
     }
 
+    /**
+     * Sets title.
+     *
+     * @param mTitle the m title
+     */
     public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
+    /**
+     * Gets image url.
+     *
+     * @return the image url
+     */
     public String getImageUrl() {
         return mImageUrl;
     }
 
+    /**
+     * Sets image url.
+     *
+     * @param imageUrl the image url
+     */
     public void setImageUrl(String imageUrl) {
         mImageUrl = imageUrl;
     }
 
+    /**
+     * Get share image name string.
+     *
+     * @return the string
+     */
     public String getShareImageName(){
         return getTitle() + "image";
     }
 
+    /**
+     * Get share text name string.
+     *
+     * @return the string
+     */
     public String getShareTextName(){
         return getTitle() + "text";
     }
 
     //region Parcelable
 
+    /**
+     * The constant CREATOR.
+     */
     public static final Parcelable.Creator<BingoItem> CREATOR = new Parcelable.Creator<BingoItem>() {
 
         @Override
@@ -75,6 +120,11 @@ public class BingoItem implements Parcelable {
         return 0;
     }
 
+    /**
+     * Instantiates a new Bingo item.
+     *
+     * @param source the source
+     */
     public BingoItem(Parcel source) {
         setTitle(source.readString());
         setImageUrl(source.readString());

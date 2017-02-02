@@ -49,6 +49,9 @@ public abstract class BaseActivity extends AppCompatActivity implements
      */
     protected abstract int getContentViewId();
 
+    /**
+     * The M network state receiver.
+     */
     protected NetworkStateReceiver mNetworkStateReceiver;
 
     @Override
@@ -134,9 +137,20 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     //region Working with fragments
 
+    /**
+     * The M need go to prev fragment.
+     */
     protected boolean mNeedGoToPrevFragment = false;
+    /**
+     * The M prev fragment tag.
+     */
     protected String mPrevFragmentTag = "";
 
+    /**
+     * Go to prev fragment.
+     *
+     * @param tag the tag
+     */
     public void goToPrevFragment(String tag) {
         //Util.hideSoftKeyboard(this);
         try {
@@ -208,8 +222,6 @@ public abstract class BaseActivity extends AppCompatActivity implements
         }
         fragmentTransaction.commitAllowingStateLoss();
     }
-
-
 
 
     /**
